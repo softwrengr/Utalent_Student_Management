@@ -64,6 +64,8 @@ public class FeeReportAdapter  extends RecyclerView.Adapter<FeeReportAdapter.MyV
                 if(holder.checkBox.isChecked()){
                     String strID = feeModel.getId();
                     apicallDeleteStd(strID);
+                    String strFeeCollect = feeModel.getFee();
+                    apicallFeeCollect(strFeeCollect);
 //
                 }
                 else {
@@ -137,5 +139,46 @@ public class FeeReportAdapter  extends RecyclerView.Adapter<FeeReportAdapter.MyV
 
     }
     //end
+
+    //api call for collecting fee
+
+    private void apicallFeeCollect(String fee) {
+        final String strFee = fee;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/fee_collection.php"
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("response", response);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("fee",strFee);
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+
 }
 
