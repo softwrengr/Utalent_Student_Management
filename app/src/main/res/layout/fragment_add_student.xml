@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/home_background"
+    tools:context=".Fragments.AddStudentFragment">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp">
+
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Username "
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etname"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Remark "
+            android:layout_marginLeft="10sp"
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etRemark"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp">
+
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Tel "
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etTel"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Fee Total "
+            android:layout_marginLeft="10sp"
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etFeetotal"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="30sp">
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Address "
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="30sp">
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Subject "
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etSubject"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            android:padding="10sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="150sp" />
+
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+</LinearLayout>

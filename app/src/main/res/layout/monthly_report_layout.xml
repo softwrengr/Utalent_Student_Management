@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tvMonthName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Month Name"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvMonthlystudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Month Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"/>
+
+            <TextView
+                android:id="@+id/tvMonthlyFee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Month Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/tvMonthlystudent"
+                android:layout_marginTop="10sp"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

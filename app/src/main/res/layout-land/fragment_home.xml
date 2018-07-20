@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background"
+    android:orientation="vertical"
+    tools:context=".Fragments.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp">
+
+        <TextView
+            android:id="@+id/tvTotalstudents"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="Total Students"
+            android:textStyle="bold"
+            android:layout_marginLeft="30sp"
+            android:layout_centerVertical="true"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            />
+
+        <ImageView
+            android:layout_width="90sp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@id/tvTotalstudents"
+            android:layout_marginLeft="150sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"/>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180sp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5sp">
+
+        <TextView
+            android:id="@+id/namestd"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="Students"
+            android:textSize="18sp"
+            android:textColor="#eee"
+            android:background="@drawable/image_section"
+            android:layout_marginLeft="35sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvTotalStudents"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_section"
+            android:scrollbars="vertical"
+            android:layout_below="@id/namestd"
+            android:layout_marginLeft="35sp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:text="Fee Report"
+            android:textSize="18sp"
+            android:textColor="#eee"
+            android:background="@drawable/image_section"
+            android:layout_toRightOf="@id/namestd"
+            android:layout_marginLeft="50sp"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvFeeReports"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rvTotalStudents"
+            android:layout_below="@id/namestd"
+            android:background="@drawable/image_section"
+            android:layout_marginLeft="50sp"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="170sp"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:background="@drawable/btnripple"
+            android:layout_marginRight="20sp"/>
+
+        <Button
+            android:id="@+id/btnStd"
+            android:layout_width="170sp"
+            android:layout_height="wrap_content"
+            android:text="Student"
+            android:background="@drawable/btnripple"
+            android:layout_marginRight="20sp"/>
+        <Button
+            android:id="@+id/btnReport"
+            android:layout_width="170sp"
+            android:layout_height="wrap_content"
+            android:text="Report"
+            android:background="@drawable/btnripple"
+            android:layout_marginRight="20sp"/>
+        <Button
+            android:id="@+id/btnSetting"
+            android:layout_width="170sp"
+            android:layout_height="wrap_content"
+            android:text="Setting"
+            android:background="@drawable/btnripple"
+            android:layout_marginRight="20sp"/>
+    </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
