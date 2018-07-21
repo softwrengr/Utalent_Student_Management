@@ -12,7 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -55,18 +59,24 @@ public class HomeFragment extends Fragment {
     FeeReportAdapter feeReportAdapter;
     Button btnAddStudents,btnReport,btnSetting,btnHome;
     TextView tvTotalStd;
+    ImageView ivSearchStd;
+    String strSearchName;
+    EditText etSearchStd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        getActivity().setTitle("Utalent Student Management");
         rvTotalStudents = view.findViewById(R.id.rvTotalStudents);
         rvFeeReport = view.findViewById(R.id.rvFeeReports);
         btnAddStudents = view.findViewById(R.id.btnStd);
         btnReport = view.findViewById(R.id.btnReport);
         btnSetting = view.findViewById(R.id.btnSetting);
         tvTotalStd = view.findViewById(R.id.tvTotalstudents);
+        ivSearchStd = view.findViewById(R.id.etSearchStdList);
+        etSearchStd = view.findViewById(R.id.etSearchStd);
 
         Dexter.withActivity(getActivity())
                 .withPermissions(
@@ -108,6 +118,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Fragment fragment = new SettingFragment();
                 getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+            }
+        });
+
+        ivSearchStd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiCallStudentSearch();
             }
         });
         return view;
@@ -309,6 +326,85 @@ public class HomeFragment extends Fragment {
                 return "application/x-www-form-urlencoded;charset=UTF-8";
             }
 
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+
+    //api call for student search
+    private void apiCallStudentSearch() {
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.dialog_layout);
+        final TextView tvDialogName = dialog.findViewById(R.id.tvDialogName);
+        final TextView tvDialogFee = dialog.findViewById(R.id.tvDialogFee);
+        final Button btnDialogOk = dialog.findViewById(R.id.btnDialogOk);
+        strSearchName = etSearchStd.getText().toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/student_search.php"
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                alertDialog.dismiss();
+                if (response.contains("200")) {
+                    try {
+                        if (alertDialog != null)
+                            alertDialog.dismiss();
+
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArr = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < jsonArr.length(); i++) {
+                            JSONObject temp = jsonArr.getJSONObject(i);
+                            String name = temp.getString("name");
+                            String fee = temp.getString("fee_total");
+                            tvDialogName.setText(name);
+                            tvDialogFee.setText(fee);
+                            dialog.show();
+                            etSearchStd.setText("");
+                            btnDialogOk.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog.dismiss();
+                                }
+                            });
+
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        if (alertDialog != null)
+                            alertDialog.dismiss();
+                    }
+
+
+                } else {
+
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (alertDialog != null)
+                    alertDialog.dismiss();
+
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                Log.d("ser",strSearchName);
+                params.put("name",strSearchName);
+                return params;
+
+            }
         };
         RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash_background"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".Fragments.HomeFragment">
 
     <ScrollView
@@ -19,9 +20,33 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp">
+
+       <LinearLayout
+           android:id="@+id/searchLayout"
+           android:layout_width="190sp"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginLeft="30sp"
+           android:background="@drawable/edittext_shape">
+           <EditText
+               android:id="@+id/etSearchStd"
+               android:layout_width="150sp"
+               android:layout_height="30sp"
+               android:hint="Search student"
+               android:paddingLeft="5sp"
+               android:textSize="14sp"
+               android:background="@null"
+               android:textColorHint="#f3f3f3"
+              />
+           <ImageView
+               android:id="@+id/etSearchStdList"
+               android:layout_width="30sp"
+               android:layout_height="28sp"
+               android:layout_gravity="center"
+               android:src="@drawable/search"/>
+       </LinearLayout>
 
         <TextView
             android:id="@+id/tvTotalstudents"
@@ -29,18 +54,30 @@
             android:layout_height="wrap_content"
             android:text="Total Students"
             android:textStyle="bold"
+            android:layout_below="@id/searchLayout"
             android:layout_marginLeft="30sp"
-            android:layout_centerVertical="true"
             android:textSize="25sp"
             android:textColor="#fff"
             />
 
-        <ImageView
-            android:layout_width="90sp"
-            android:layout_height="80dp"
+
+        <EditText
+            android:id="@+id/etSearchFeeList"
+            android:layout_width="150sp"
+            android:layout_height="30sp"
+            android:background="@drawable/edittext_shape"
+            android:hint="Search fee list"
+            android:paddingLeft="5sp"
+            android:textSize="14sp"
+            android:layout_marginLeft="50sp"
             android:layout_toRightOf="@id/tvTotalstudents"
-            android:layout_marginLeft="150sp"
-            android:scaleType="fitXY"
+            android:textColorHint="#f3f3f3" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="80sp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@id/etSearchFeeList"
+            android:layout_marginLeft="30sp"
             android:src="@drawable/logo"/>
     </RelativeLayout>
 

@@ -17,8 +17,10 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
+        this.setTitle("Utalent Student Management");
         Fragment fragment = new LoginFragment();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+
     }
 
 
