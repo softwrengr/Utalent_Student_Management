@@ -59,9 +59,9 @@ public class HomeFragment extends Fragment {
     FeeReportAdapter feeReportAdapter;
     Button btnAddStudents,btnReport,btnSetting,btnHome;
     TextView tvTotalStd;
-    ImageView ivSearchStd;
-    String strSearchName;
-    EditText etSearchStd;
+    ImageView ivSearchStd,ivSearchFee;
+    String strSearchName=null,strSearchReport=null;
+    EditText etSearchStd,etSearchFee;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,7 +76,9 @@ public class HomeFragment extends Fragment {
         btnSetting = view.findViewById(R.id.btnSetting);
         tvTotalStd = view.findViewById(R.id.tvTotalstudents);
         ivSearchStd = view.findViewById(R.id.etSearchStdList);
+        ivSearchFee = view.findViewById(R.id.ivSearchFee);
         etSearchStd = view.findViewById(R.id.etSearchStd);
+        etSearchFee = view.findViewById(R.id.etSearchFee);
 
         Dexter.withActivity(getActivity())
                 .withPermissions(
@@ -98,6 +100,8 @@ public class HomeFragment extends Fragment {
         apicallTotalStd();
         apiSetUpFeeReport();
         apiSetUp();
+
+
 
         btnAddStudents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,11 +128,32 @@ public class HomeFragment extends Fragment {
         ivSearchStd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiCallStudentSearch();
+               apiSetUpForSearch();
+               if(strSearchName==null){
+                   apiSetUp();
+               }
+            }
+        });
+        ivSearchFee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiSetUpFeeSearch();
+                if(strSearchReport==null){
+                    apiSetUpFeeReport();
+                }
             }
         });
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(strSearchName==null){
+            apiSetUp();
+        }
+    }
+
 
     public void apiSetUp() {
         rvTotalStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -156,6 +181,33 @@ public class HomeFragment extends Fragment {
     }
     //end
 
+    //api call for student search
+    public void apiSetUpForSearch() {
+        rvFeeReport.setLayoutManager(new LinearLayoutManager(getActivity()));
+        feeReportModelArrayList = new ArrayList<>();
+        apiCallStudentSearch();
+        if (alertDialog == null)
+            alertDialog = AlertUtils.createProgressDialog(getActivity());
+        alertDialog.show();
+        feeReportAdapter = new FeeReportAdapter(getActivity(), feeReportModelArrayList);
+        rvFeeReport.setAdapter(feeReportAdapter);
+
+
+    }
+
+    //api call for fee search
+    public void apiSetUpFeeSearch() {
+        rvFeeReport.setLayoutManager(new LinearLayoutManager(getActivity()));
+        feeReportModelArrayList = new ArrayList<>();
+        apiCallFeeSearch();
+        if (alertDialog == null)
+            alertDialog = AlertUtils.createProgressDialog(getActivity());
+        alertDialog.show();
+        feeReportAdapter = new FeeReportAdapter(getActivity(), feeReportModelArrayList);
+        rvFeeReport.setAdapter(feeReportAdapter);
+
+    }
+
     private void apicall() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://chritmis.com/Utalent_Api/all_students.php"
                 , new Response.Listener<String>() {
@@ -175,8 +227,10 @@ public class HomeFragment extends Fragment {
                             AddStudentModel model = new AddStudentModel();
                             String std_id = temp.getString("id");
                             String name = temp.getString("name");
+                            String totalFee = temp.getString("fee_total");
                             model.setStd_id(std_id);
                             model.setStd_name(name);
+                            model.setTotal_fee(totalFee);
                             addStudentModelArrayList.add(model);
                         }
                         addStudentAdapter.notifyDataSetChanged();
@@ -337,17 +391,13 @@ public class HomeFragment extends Fragment {
 
     //api call for student search
     private void apiCallStudentSearch() {
-        dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.dialog_layout);
-        final TextView tvDialogName = dialog.findViewById(R.id.tvDialogName);
-        final TextView tvDialogFee = dialog.findViewById(R.id.tvDialogFee);
-        final Button btnDialogOk = dialog.findViewById(R.id.btnDialogOk);
         strSearchName = etSearchStd.getText().toString();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/student_search.php"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
+                addStudentModelArrayList.clear();
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)
@@ -357,20 +407,14 @@ public class HomeFragment extends Fragment {
                         JSONArray jsonArr = jsonObject.getJSONArray("data");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
+                            AddStudentModel model = new AddStudentModel();
+                            String std_id = temp.getString("id");
                             String name = temp.getString("name");
-                            String fee = temp.getString("fee_total");
-                            tvDialogName.setText(name);
-                            tvDialogFee.setText(fee);
-                            dialog.show();
-                            etSearchStd.setText("");
-                            btnDialogOk.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                }
-                            });
-
+                            model.setStd_id(std_id);
+                            model.setStd_name(name);
+                            addStudentModelArrayList.add(model);
                         }
+                        addStudentAdapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -400,8 +444,79 @@ public class HomeFragment extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                Log.d("ser",strSearchName);
                 params.put("name",strSearchName);
+                return params;
+
+            }
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+
+    }
+
+    //api call for fee search
+    private void apiCallFeeSearch() {
+
+        strSearchReport = etSearchFee.getText().toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/fee_collect_search.php"
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                alertDialog.dismiss();
+                feeReportModelArrayList.clear();
+                if (response.contains("200")) {
+                    try {
+                        if (alertDialog != null)
+                            alertDialog.dismiss();
+
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArr = jsonObject.getJSONArray("data");
+                        for (int i = 0; i < jsonArr.length(); i++) {
+                            JSONObject temp = jsonArr.getJSONObject(i);
+                            SpecificStudentModel model = new SpecificStudentModel();
+                            String id = temp.getString("student_id");
+                            String name = temp.getString("name");
+                            String totalFee = temp.getString("fee");
+                            model.setId(id);
+                            model.setName(name);
+                            model.setFee(totalFee);
+
+                            feeReportModelArrayList.add(model);
+                        }
+                        feeReportAdapter.notifyDataSetChanged();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        if (alertDialog != null)
+                            alertDialog.dismiss();
+                    }
+
+
+                } else {
+
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (alertDialog != null)
+                    alertDialog.dismiss();
+
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("name",strSearchReport);
                 return params;
 
             }

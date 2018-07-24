@@ -1,5 +1,6 @@
 package utalent.square.developer.utalent.Adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,6 +22,7 @@ import utalent.square.developer.utalent.R;
 public class AddStudentAdapter  extends RecyclerView.Adapter<AddStudentAdapter.MyViewHolder> {
     ArrayList<AddStudentModel> addStudentModelArrayList;
     Context context;
+    Dialog dialog;
 
     public AddStudentAdapter(Context context, ArrayList<AddStudentModel> editLicensesModelArrayList) {
         this.context = context;
@@ -34,13 +37,26 @@ public class AddStudentAdapter  extends RecyclerView.Adapter<AddStudentAdapter.M
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         final AddStudentModel editLicensesModel = addStudentModelArrayList.get(position);
         holder.tvStdName.setText(editLicensesModel.getStd_name());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                dialog = new Dialog(context);
+                dialog.setContentView(R.layout.dialog_layout);
+                final TextView tvDialogName = dialog.findViewById(R.id.tvDialogName);
+                final TextView tvDialogFee = dialog.findViewById(R.id.tvDialogFee);
+                final Button btnDialogOk = dialog.findViewById(R.id.btnDialogOk);
+                tvDialogName.setText(editLicensesModel.getStd_name());
+                tvDialogFee.setText(editLicensesModel.getTotal_fee());
+                btnDialogOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
             }
         });
     }

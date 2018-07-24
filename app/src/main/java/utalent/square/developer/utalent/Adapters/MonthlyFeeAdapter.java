@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,15 +18,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import utalent.square.developer.utalent.Models.AddStudentModel;
 import utalent.square.developer.utalent.Models.FeeReportModel;
 import utalent.square.developer.utalent.R;
+import utalent.square.developer.utalent.Utils.ShareUtils;
 
-public class MonthlyFeeAdapter  extends RecyclerView.Adapter<MonthlyFeeAdapter.MyViewHolder> {
+public class MonthlyFeeAdapter extends RecyclerView.Adapter<MonthlyFeeAdapter.MyViewHolder> {
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+    FileWriter writer;
+    File rootFile, CsvFile;
     ArrayList<FeeReportModel> feeReportModelArrayList;
     Context context;
+    Boolean restriction;
 
     public MonthlyFeeAdapter(Context context, ArrayList<FeeReportModel> editLicensesModelArrayList) {
         this.context = context;
@@ -40,21 +48,21 @@ public class MonthlyFeeAdapter  extends RecyclerView.Adapter<MonthlyFeeAdapter.M
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-     final FeeReportModel feeReportModel = feeReportModelArrayList.get(position);
-     holder.tvmonthName.setText(feeReportModel.getMonthName());
-     holder.tvmonthlyFee.setText("$"+feeReportModel.getMonthlyFee()+" Total");
-     holder.tvMonthlystudent.setText(feeReportModel.getMonthlyTotalStudents()+" Students");
-     holder.cardView.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             String monthName = feeReportModel.getMonthName();
-             String total_student = feeReportModel.getMonthlyTotalStudents();
-             String total_fee = feeReportModel.getMonthlyFee();
-             String body = monthName+total_student+total_fee;
-             generateNoteOnSD(body);
-         }
-     });
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
+        final FeeReportModel feeReportModel = feeReportModelArrayList.get(position);
+        holder.tvmonthName.setText(feeReportModel.getMonthName());
+        holder.tvmonthlyFee.setText("$" + feeReportModel.getMonthlyFee() + " Total");
+        holder.tvMonthlystudent.setText(feeReportModel.getMonthlyTotalStudents() + " Students");
+        holder.ivExcelExport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String monthName = feeReportModel.getMonthName();
+                String total_student = feeReportModel.getMonthlyTotalStudents();
+                String total_fee = feeReportModel.getMonthlyFee();
+                String body = monthName + total_student + total_fee;
+                generateNoteOnSD(monthName, total_student, total_fee);
+            }
+        });
     }
 
 
@@ -64,41 +72,76 @@ public class MonthlyFeeAdapter  extends RecyclerView.Adapter<MonthlyFeeAdapter.M
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvmonthName,tvMonthlystudent;
+        TextView tvmonthName, tvMonthlystudent;
         TextView tvmonthlyFee;
         CardView cardView;
+        ImageView ivExcelExport;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             tvmonthName = itemView.findViewById(R.id.tvMonthName);
             tvmonthlyFee = itemView.findViewById(R.id.tvMonthlyFee);
             tvMonthlystudent = itemView.findViewById(R.id.tvMonthlystudent);
             cardView = itemView.findViewById(R.id.cvMonthlyReport);
+            ivExcelExport = itemView.findViewById(R.id.ivExcel);
         }
     }
 
-    public void generateNoteOnSD(String sBody) {
-        SimpleDateFormat formatter = new SimpleDateFormat("mm");
-        Date now = new Date();
-        String fileName = "abdullah" + ".xls";
+
+    public void generateNoteOnSD(String monthName, String total_student, String total_fee) {
+        Date currentTime = Calendar.getInstance().getTime();
+        String dataTime = String.valueOf(currentTime);
+
         try {
-            File root = new File(Environment.getExternalStorageDirectory() + File.separator + "Notes");
-            if (!root.exists()) {
-                root.mkdirs();
-                Toast.makeText(context, "file created", Toast.LENGTH_SHORT).show();
+
+            rootFile = new File(Environment.getExternalStorageDirectory(), "Utalent Folder");
+
+            if (!rootFile.exists()) {
+                rootFile.mkdirs();
+                ShareUtils.putValueInEditor(context).putBoolean("title", true).commit();
+            }
+            CsvFile = new File(rootFile, "Utalent Fee Report" + ".CSV");
+            if (!CsvFile.exists()) {
+                ShareUtils.putValueInEditor(context).putBoolean("title", true).commit();
+            }
+            writer = new FileWriter(CsvFile, true);
+            restriction = ShareUtils.getSharedPreferences(context).getBoolean("title", false);
+            if (restriction) {
+                writer.append("Month");
+                writer.append(COMMA_DELIMITER);
+                writer.append("Total Student");
+                writer.append(COMMA_DELIMITER);
+                writer.append(COMMA_DELIMITER);
+                writer.append("Total Fee");
+                writer.append(COMMA_DELIMITER);
+                writer.append("Export Date");
+                writer.append(COMMA_DELIMITER);
+                writer.append(COMMA_DELIMITER);
+                writer.append(NEW_LINE_SEPARATOR);
             }
 
-            File gpxfile = new File(root, fileName);
 
 
-            FileWriter writer = new FileWriter(gpxfile, true);
-            writer.append(sBody + "\n\n");
+            writer.append(monthName);
+            writer.append(COMMA_DELIMITER);
+            writer.append(total_student);
+            writer.append(COMMA_DELIMITER);
+            writer.append(COMMA_DELIMITER);
+            writer.append("$"+total_fee);
+            writer.append(COMMA_DELIMITER);
+            writer.append(dataTime);
+            writer.append(COMMA_DELIMITER);
+            writer.append(NEW_LINE_SEPARATOR);
+
+
             writer.flush();
             writer.close();
 
+            Toast.makeText(context, "Report Saved", Toast.LENGTH_SHORT).show();
+            ShareUtils.putValueInEditor(context).putBoolean("title", false).commit();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
 
