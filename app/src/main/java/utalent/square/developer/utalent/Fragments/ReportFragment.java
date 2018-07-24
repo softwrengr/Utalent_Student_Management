@@ -1,8 +1,6 @@
 package utalent.square.developer.utalent.Fragments;
 
 import android.Manifest;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,16 +27,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import utalent.square.developer.utalent.Adapters.FeeReportAdapter;
 import utalent.square.developer.utalent.Adapters.MonthlyFeeAdapter;
-import utalent.square.developer.utalent.Models.AddStudentModel;
 import utalent.square.developer.utalent.Models.FeeReportModel;
-import utalent.square.developer.utalent.Models.SpecificStudentModel;
 import utalent.square.developer.utalent.R;
 import utalent.square.developer.utalent.Utils.AlertUtils;
 

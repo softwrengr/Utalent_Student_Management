@@ -114,15 +114,30 @@
         android:layout_marginLeft="40sp"
         android:layout_marginTop="5sp">
 
-        <TextView
+        <RelativeLayout
             android:id="@+id/namestd"
             android:layout_width="300sp"
             android:layout_height="wrap_content"
-            android:text="Students"
-            android:textSize="18sp"
-            android:textColor="#eee"
+            android:orientation="horizontal"
             android:background="@drawable/image_section"
-            android:layout_marginLeft="35sp"/>
+            android:layout_marginLeft="35sp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Students"
+                android:textSize="18sp"
+                android:textColor="#eee" />
+
+            <ImageView
+                android:id="@+id/ivRefreshStd"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/refresh"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5sp"/>
+        </RelativeLayout>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvTotalStudents"
@@ -135,15 +150,28 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="300sp"
             android:layout_height="wrap_content"
-            android:text="Fee Report"
-            android:textSize="18sp"
-            android:textColor="#eee"
             android:background="@drawable/image_section"
             android:layout_toRightOf="@id/namestd"
-            android:layout_marginLeft="50sp"/>
+            android:layout_marginLeft="50sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fee Report"
+                android:textSize="18sp"
+                android:textColor="#eee" />
+
+            <ImageView
+                android:id="@+id/ivRefreshReport"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/refresh"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5sp"/>
+        </RelativeLayout>
 
 
         <android.support.v7.widget.RecyclerView

@@ -1,6 +1,6 @@
 package utalent.square.developer.utalent.Models;
 
-public class SpecificStudentModel {
+public class ShowFeeModel {
     String id;
     String name;
     String fee;

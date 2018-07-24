@@ -2,7 +2,6 @@ package utalent.square.developer.utalent.Fragments;
 
 import android.Manifest;
 import android.app.Dialog;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -44,7 +41,7 @@ import java.util.Map;
 import utalent.square.developer.utalent.Adapters.AddStudentAdapter;
 import utalent.square.developer.utalent.Adapters.FeeReportAdapter;
 import utalent.square.developer.utalent.Models.AddStudentModel;
-import utalent.square.developer.utalent.Models.SpecificStudentModel;
+import utalent.square.developer.utalent.Models.ShowFeeModel;
 import utalent.square.developer.utalent.R;
 import utalent.square.developer.utalent.Utils.AlertUtils;
 
@@ -54,12 +51,12 @@ public class HomeFragment extends Fragment {
     Dialog dialog;
     RecyclerView rvTotalStudents,rvFeeReport;
     ArrayList<AddStudentModel> addStudentModelArrayList;
-    ArrayList<SpecificStudentModel> feeReportModelArrayList;
+    ArrayList<ShowFeeModel> feeReportModelArrayList;
     AddStudentAdapter addStudentAdapter;
     FeeReportAdapter feeReportAdapter;
     Button btnAddStudents,btnReport,btnSetting,btnHome;
     TextView tvTotalStd;
-    ImageView ivSearchStd,ivSearchFee;
+    ImageView ivSearchStd,ivSearchFee,ivRefreshStd,ivRefreshReport;
     String strSearchName=null,strSearchReport=null;
     EditText etSearchStd,etSearchFee;
 
@@ -76,6 +73,8 @@ public class HomeFragment extends Fragment {
         btnSetting = view.findViewById(R.id.btnSetting);
         tvTotalStd = view.findViewById(R.id.tvTotalstudents);
         ivSearchStd = view.findViewById(R.id.etSearchStdList);
+        ivRefreshStd = view.findViewById(R.id.ivRefreshStd);
+        ivRefreshReport = view.findViewById(R.id.ivRefreshReport);
         ivSearchFee = view.findViewById(R.id.ivSearchFee);
         etSearchStd = view.findViewById(R.id.etSearchStd);
         etSearchFee = view.findViewById(R.id.etSearchFee);
@@ -99,7 +98,7 @@ public class HomeFragment extends Fragment {
 
         apicallTotalStd();
         apiSetUpFeeReport();
-        apiSetUp();
+        apiSetUpStudents();
 
 
 
@@ -130,7 +129,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                apiSetUpForSearch();
                if(strSearchName==null){
-                   apiSetUp();
+                   apiSetUpStudents();
                }
             }
         });
@@ -143,6 +142,19 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+        ivRefreshStd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiSetUpStudents();
+            }
+        });
+        ivRefreshReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiSetUpFeeReport();
+            }
+        });
         return view;
     }
 
@@ -150,12 +162,12 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if(strSearchName==null){
-            apiSetUp();
+            apiSetUpStudents();
         }
     }
 
 
-    public void apiSetUp() {
+    public void apiSetUpStudents() {
         rvTotalStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
         addStudentModelArrayList = new ArrayList<>();
         apicall();
@@ -183,14 +195,14 @@ public class HomeFragment extends Fragment {
 
     //api call for student search
     public void apiSetUpForSearch() {
-        rvFeeReport.setLayoutManager(new LinearLayoutManager(getActivity()));
-        feeReportModelArrayList = new ArrayList<>();
+        rvTotalStudents.setLayoutManager(new LinearLayoutManager(getActivity()));
+        addStudentModelArrayList = new ArrayList<>();
         apiCallStudentSearch();
         if (alertDialog == null)
             alertDialog = AlertUtils.createProgressDialog(getActivity());
         alertDialog.show();
-        feeReportAdapter = new FeeReportAdapter(getActivity(), feeReportModelArrayList);
-        rvFeeReport.setAdapter(feeReportAdapter);
+        addStudentAdapter = new AddStudentAdapter(getActivity(), addStudentModelArrayList);
+        rvTotalStudents.setAdapter(addStudentAdapter);
 
 
     }
@@ -343,7 +355,7 @@ public class HomeFragment extends Fragment {
                         JSONArray jsonArr = jsonObject.getJSONArray("data");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
-                            SpecificStudentModel model = new SpecificStudentModel();
+                            ShowFeeModel model = new ShowFeeModel();
                             String id = temp.getString("student_id");
                             String name = temp.getString("name");
                             String totalFee = temp.getString("fee");
@@ -476,7 +488,7 @@ public class HomeFragment extends Fragment {
                         JSONArray jsonArr = jsonObject.getJSONArray("data");
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject temp = jsonArr.getJSONObject(i);
-                            SpecificStudentModel model = new SpecificStudentModel();
+                            ShowFeeModel model = new ShowFeeModel();
                             String id = temp.getString("student_id");
                             String name = temp.getString("name");
                             String totalFee = temp.getString("fee");

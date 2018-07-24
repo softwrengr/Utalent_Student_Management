@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,25 +22,20 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import utalent.square.developer.utalent.Fragments.HomeFragment;
-import utalent.square.developer.utalent.Models.AddStudentModel;
-import utalent.square.developer.utalent.Models.SpecificStudentModel;
+import utalent.square.developer.utalent.Models.ShowFeeModel;
 import utalent.square.developer.utalent.R;
 
 public class FeeReportAdapter  extends RecyclerView.Adapter<FeeReportAdapter.MyViewHolder> {
     android.support.v7.app.AlertDialog alertDialog;
-    ArrayList<SpecificStudentModel> feeReportArrayList;
+    ArrayList<ShowFeeModel> feeReportArrayList;
     Context context;
 
-    public FeeReportAdapter(Context context, ArrayList<SpecificStudentModel> feeReportArrayList) {
+    public FeeReportAdapter(Context context, ArrayList<ShowFeeModel> feeReportArrayList) {
         this.context = context;
         this.feeReportArrayList = feeReportArrayList;
     }
@@ -55,7 +49,7 @@ public class FeeReportAdapter  extends RecyclerView.Adapter<FeeReportAdapter.MyV
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
-        final SpecificStudentModel feeModel = feeReportArrayList.get(position);
+        final ShowFeeModel feeModel = feeReportArrayList.get(position);
         holder.tvStdName.setText(feeModel.getName());
         holder.tvFee.setText(feeModel.getFee());
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
