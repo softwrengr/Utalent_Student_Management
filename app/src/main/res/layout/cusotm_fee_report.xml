@@ -22,8 +22,9 @@
                 android:text="Student name"
                 android:textSize="16sp"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="10sp"
+                android:layout_marginTop="12sp"
+                android:layout_marginBottom="12sp"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"/>
 
             <TextView
@@ -33,8 +34,9 @@
                 android:text="Total Fee"
                 android:textSize="16sp"
                 android:layout_marginLeft="10sp"
-                android:layout_marginTop="10sp"
-                android:layout_marginBottom="10sp"
+                android:layout_marginTop="12sp"
+                android:layout_marginBottom="12sp"
+                android:textColor="@color/colorPrimary"
                 android:layout_toRightOf="@id/tvName"
                 android:textStyle="bold"/>
 
@@ -43,12 +45,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/tvTotalFee"
-                android:layout_marginTop="10sp"
+                android:layout_marginTop="12sp"
+                android:shadowColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginLeft="10sp"/>
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="#000"
+                android:background="@color/colorPrimary"
                 android:layout_below="@id/feeCheck"/>
 
         </RelativeLayout>

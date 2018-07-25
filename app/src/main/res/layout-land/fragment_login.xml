@@ -15,15 +15,15 @@
 
        <de.hdodenhof.circleimageview.CircleImageView
            android:id="@+id/image"
-           android:layout_width="50sp"
-           android:layout_height="50sp"
+           android:layout_width="70sp"
+           android:layout_height="70sp"
            android:src="@drawable/logo"
            android:layout_marginLeft="30sp"
            android:layout_centerHorizontal="true"/>
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Utalent"
+           android:text="Utalent Student Management"
            android:textSize="30sp"
            android:textColor="#FFF"
            android:gravity="center"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="15sp"
         android:gravity="center">
 
         <TextView
@@ -94,14 +94,14 @@
 
         <Button
             android:id="@+id/btnSignin"
-            android:layout_width="200sp"
+            android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:layout_below="@id/etUserpassword"
             android:layout_gravity="center"
-            android:layout_marginLeft="50sp"
-            android:layout_marginTop="10sp"
+            android:layout_marginLeft="40sp"
+            android:layout_marginTop="12sp"
             android:layout_toRightOf="@id/tvpassword"
-            android:background="#fff"
+            android:background="@drawable/btnripple"
             android:gravity="center"
             android:text="Login"
             android:textColor="@color/colorPrimary"

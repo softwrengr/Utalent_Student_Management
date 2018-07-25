@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -68,6 +69,7 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Utalent Student Management");
         rvTotalStudents = view.findViewById(R.id.rvTotalStudents);
         rvFeeReport = view.findViewById(R.id.rvFeeReports);
+        btnHome = view.findViewById(R.id.btnHome);
         btnAddStudents = view.findViewById(R.id.btnStd);
         btnReport = view.findViewById(R.id.btnReport);
         btnSetting = view.findViewById(R.id.btnSetting);
@@ -100,7 +102,14 @@ public class HomeFragment extends Fragment {
         apiSetUpFeeReport();
         apiSetUpStudents();
 
-
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new HomeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+                Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnAddStudents.setOnClickListener(new View.OnClickListener() {
             @Override

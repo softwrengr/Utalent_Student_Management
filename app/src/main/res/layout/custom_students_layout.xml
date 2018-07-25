@@ -21,13 +21,14 @@
             android:text="Student name"
             android:textSize="16sp"
             android:layout_marginLeft="10sp"
-            android:layout_marginTop="10sp"
-             android:layout_marginBottom="10sp"
+            android:layout_marginTop="12sp"
+             android:layout_marginBottom="12sp"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"/>
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:background="#000"/>
+            android:background="@color/colorPrimary"/>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
