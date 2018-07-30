@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#EEE"
     android:orientation="vertical"
     android:layout_gravity="center"
     tools:context=".Fragments.HomeFragment">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
 
@@ -39,9 +40,9 @@
                android:hint="Search student"
                android:paddingLeft="5sp"
                android:textSize="14sp"
-               android:textColor="@color/white"
+               android:textColor="#f3f3f3"
                android:background="@null"
-               android:textColorHint="#f3f3f3"
+               android:textColorHint="@color/black"
               />
            <ImageView
                android:id="@+id/etSearchStdList"
@@ -60,7 +61,7 @@
             android:layout_below="@id/searchLayout"
             android:layout_marginLeft="30sp"
             android:textSize="25sp"
-            android:textColor="#fff"
+            android:textColor="@color/black"
             />
 
 
@@ -83,9 +84,9 @@
                    android:hint="Search fee report"
                    android:paddingLeft="5sp"
                    android:textSize="14sp"
-                   android:textColor="@color/white"
+                   android:textColor="@color/black"
                    android:background="@null"
-                   android:textColorHint="#f3f3f3"
+                   android:textColorHint="@color/black"
                    />
                <ImageView
                    android:id="@+id/ivSearchFee"
@@ -126,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:text="Students"
                 android:textSize="18sp"
-                android:textColor="#eee" />
+                android:textColor="@color/black" />
 
             <ImageView
                 android:id="@+id/ivRefreshStd"
@@ -162,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="Fee Report"
                 android:textSize="18sp"
-                android:textColor="#eee" />
+                android:textColor="@color/black" />
 
             <ImageView
                 android:id="@+id/ivRefreshReport"
@@ -200,7 +201,7 @@
         <Button
             android:id="@+id/btnHome"
             android:layout_width="170sp"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:text="Home"
             android:background="@drawable/btnripple"
             android:layout_marginRight="20sp"/>
@@ -228,8 +229,26 @@
             android:layout_marginRight="20sp"/>
     </LinearLayout>
 
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:gravity="bottom">-->
+                <!--<android.support.design.widget.BottomNavigationView-->
+                    <!--android:id="@+id/bottomBar"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="60sp"-->
+                    <!--android:layout_marginRight="35sp"-->
+                    <!--android:layout_marginLeft="35sp"-->
+                    <!--android:layout_marginTop="35sp"-->
+                    <!--android:background="@color/colorPrimary"-->
+                    <!--app:menu="@menu/bottombar_menu"-->
+                    <!--app:itemTextColor="@android:color/white"-->
+                    <!--/>-->
+            <!--</RelativeLayout>-->
         </LinearLayout>
     </ScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

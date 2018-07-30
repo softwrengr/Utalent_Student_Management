@@ -58,8 +58,9 @@
             android:layout_toRightOf="@+id/tvusername"
             android:background="@drawable/edittext_bg"
             android:inputType="textEmailAddress"
+            android:hint="enter username"
             android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColor="#f3f3f3"
             android:paddingLeft="10sp"/>
 
     </RelativeLayout>
@@ -90,7 +91,8 @@
             android:inputType="textEmailAddress"
             android:paddingLeft="10sp"
             android:textColor="#fff"
-            android:textColorHint="#fff" />
+            android:hint="enter password"
+            android:textColorHint="#f3f3f3" />
 
         <Button
             android:id="@+id/btnSignin"

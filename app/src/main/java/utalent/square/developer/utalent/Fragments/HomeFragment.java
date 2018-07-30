@@ -4,10 +4,13 @@ import android.Manifest;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -60,7 +63,7 @@ public class HomeFragment extends Fragment {
     ImageView ivSearchStd,ivSearchFee,ivRefreshStd,ivRefreshReport;
     String strSearchName=null,strSearchReport=null;
     EditText etSearchStd,etSearchFee;
-
+    BottomNavigationView bottomNavigationView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,6 +83,8 @@ public class HomeFragment extends Fragment {
         ivSearchFee = view.findViewById(R.id.ivSearchFee);
         etSearchStd = view.findViewById(R.id.etSearchStd);
         etSearchFee = view.findViewById(R.id.etSearchFee);
+//        bottomNavigationView = view.findViewById(R.id.bottomBar);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Dexter.withActivity(getActivity())
                 .withPermissions(
@@ -102,36 +107,36 @@ public class HomeFragment extends Fragment {
         apiSetUpFeeReport();
         apiSetUpStudents();
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new HomeFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-                Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btnAddStudents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new AddStudentFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-            }
-        });
-        btnReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new ReportFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-            }
-        });
-        btnSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new SettingFragment();
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-            }
-        });
+//        btnHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new HomeFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+//                Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        btnAddStudents.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new AddStudentFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+//            }
+//        });
+//        btnReport.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new ReportFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+//            }
+//        });
+//        btnSetting.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Fragment fragment = new SettingFragment();
+//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+//            }
+//        });
 
         ivSearchStd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -549,5 +554,34 @@ public class HomeFragment extends Fragment {
         mRequestQueue.add(stringRequest);
 
     }
+
+//    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.navigation_home:
+//                    Fragment fragment = new HomeFragment();
+//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+//                    Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
+//                    return true;
+//
+//                case R.id.navigation_student:
+//                    Fragment fragment1 = new AddStudentFragment();
+//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).addToBackStack("abc").commit();
+//                    return true;
+//                case R.id.navigation_report:
+//                    Fragment fragment2 = new ReportFragment();
+//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment2).addToBackStack("abc").commit();
+//                    return true;
+//                case R.id.navigation_setting:
+//                    Fragment fragment3 = new SettingFragment();
+//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment3).addToBackStack("abc").commit();
+//                    return true;
+//            }
+//            return false;
+//        }
+//    };
 
 }
