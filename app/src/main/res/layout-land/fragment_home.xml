@@ -40,7 +40,7 @@
                android:hint="Search student"
                android:paddingLeft="5sp"
                android:textSize="14sp"
-               android:textColor="#f3f3f3"
+               android:textColor="@color/black"
                android:background="@null"
                android:textColorHint="@color/black"
               />
@@ -193,60 +193,96 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="20sp"
         android:layout_marginRight="20sp"
         android:layout_marginLeft="20sp"
         android:gravity="center">
 
-        <Button
-            android:id="@+id/btnHome"
-            android:layout_width="170sp"
-            android:layout_height="50sp"
-            android:text="Home"
-            android:background="@drawable/btnripple"
-            android:layout_marginRight="20sp"/>
+        <LinearLayout
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120sp"
+                android:layout_height="50sp"
+                android:src="@drawable/home"
+                android:layout_marginRight="20sp"/>
+            <TextView
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:text="home"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginRight="20sp"/>
 
-        <Button
-            android:id="@+id/btnStd"
-            android:layout_width="170sp"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/student"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student"
-            android:background="@drawable/btnripple"
-            android:layout_marginRight="20sp"/>
-        <Button
-            android:id="@+id/btnReport"
-            android:layout_width="170sp"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120sp"
+                android:layout_height="50sp"
+                android:src="@drawable/student"
+                android:layout_marginRight="20sp"/>
+            <TextView
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:text="Student"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginRight="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/report"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report"
-            android:background="@drawable/btnripple"
-            android:layout_marginRight="20sp"/>
-        <Button
-            android:id="@+id/btnSetting"
-            android:layout_width="170sp"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120sp"
+                android:layout_height="50sp"
+                android:src="@drawable/report"
+                android:layout_marginRight="20sp"/>
+            <TextView
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:text="Report"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginRight="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Setting"
-            android:background="@drawable/btnripple"
-            android:layout_marginRight="20sp"/>
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="120sp"
+                android:layout_height="50sp"
+                android:src="@drawable/setting"
+                android:layout_marginRight="20sp"/>
+            <TextView
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:text="Setting"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginRight="20sp"/>
+        </LinearLayout>
     </LinearLayout>
 
-            <!--<RelativeLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--android:layout_gravity="bottom"-->
-                <!--android:gravity="bottom">-->
-                <!--<android.support.design.widget.BottomNavigationView-->
-                    <!--android:id="@+id/bottomBar"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="60sp"-->
-                    <!--android:layout_marginRight="35sp"-->
-                    <!--android:layout_marginLeft="35sp"-->
-                    <!--android:layout_marginTop="35sp"-->
-                    <!--android:background="@color/colorPrimary"-->
-                    <!--app:menu="@menu/bottombar_menu"-->
-                    <!--app:itemTextColor="@android:color/white"-->
-                    <!--/>-->
-            <!--</RelativeLayout>-->
         </LinearLayout>
     </ScrollView>
 

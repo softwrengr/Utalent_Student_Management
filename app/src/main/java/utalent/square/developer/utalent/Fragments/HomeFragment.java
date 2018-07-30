@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ public class HomeFragment extends Fragment {
     ArrayList<ShowFeeModel> feeReportModelArrayList;
     AddStudentAdapter addStudentAdapter;
     FeeReportAdapter feeReportAdapter;
-    Button btnAddStudents,btnReport,btnSetting,btnHome;
+    LinearLayout AddStudents,Report,Setting,Home;
     TextView tvTotalStd;
     ImageView ivSearchStd,ivSearchFee,ivRefreshStd,ivRefreshReport;
     String strSearchName=null,strSearchReport=null;
@@ -72,10 +73,10 @@ public class HomeFragment extends Fragment {
         getActivity().setTitle("Utalent Student Management");
         rvTotalStudents = view.findViewById(R.id.rvTotalStudents);
         rvFeeReport = view.findViewById(R.id.rvFeeReports);
-        btnHome = view.findViewById(R.id.btnHome);
-        btnAddStudents = view.findViewById(R.id.btnStd);
-        btnReport = view.findViewById(R.id.btnReport);
-        btnSetting = view.findViewById(R.id.btnSetting);
+        AddStudents = view.findViewById(R.id.student);
+        Report = view.findViewById(R.id.report);
+        Setting = view.findViewById(R.id.setting);
+        Home = view.findViewById(R.id.home);
         tvTotalStd = view.findViewById(R.id.tvTotalstudents);
         ivSearchStd = view.findViewById(R.id.etSearchStdList);
         ivRefreshStd = view.findViewById(R.id.ivRefreshStd);
@@ -83,8 +84,6 @@ public class HomeFragment extends Fragment {
         ivSearchFee = view.findViewById(R.id.ivSearchFee);
         etSearchStd = view.findViewById(R.id.etSearchStd);
         etSearchFee = view.findViewById(R.id.etSearchFee);
-//        bottomNavigationView = view.findViewById(R.id.bottomBar);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Dexter.withActivity(getActivity())
                 .withPermissions(
@@ -107,36 +106,36 @@ public class HomeFragment extends Fragment {
         apiSetUpFeeReport();
         apiSetUpStudents();
 
-//        btnHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new HomeFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-//                Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        btnAddStudents.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new AddStudentFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-//            }
-//        });
-//        btnReport.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new ReportFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-//            }
-//        });
-//        btnSetting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment fragment = new SettingFragment();
-//                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-//            }
-//        });
+        Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new HomeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+                Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AddStudents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new AddStudentFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+            }
+        });
+        Report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new ReportFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+            }
+        });
+        Setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new SettingFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
+            }
+        });
 
         ivSearchStd.setOnClickListener(new View.OnClickListener() {
             @Override

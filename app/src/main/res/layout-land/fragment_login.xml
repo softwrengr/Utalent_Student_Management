@@ -24,7 +24,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="Utalent Student Management"
-           android:textSize="30sp"
+           android:textSize="28sp"
            android:textColor="#FFF"
            android:gravity="center"
            android:textStyle="bold"
@@ -45,7 +45,7 @@
             android:id="@+id/tvusername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="23sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             android:text="Username "
             android:textColor="#fff"/>
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:text="Password "
             android:textColor="#fff"
-            android:textSize="23sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <EditText

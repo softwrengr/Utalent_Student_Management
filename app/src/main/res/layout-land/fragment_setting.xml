@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/splash_background"
     tools:context=".Fragments.SettingFragment">
 
     <android.support.v7.widget.CardView
