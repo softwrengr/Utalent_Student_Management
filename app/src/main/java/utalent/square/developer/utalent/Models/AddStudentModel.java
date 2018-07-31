@@ -4,6 +4,7 @@ public class AddStudentModel {
 String std_id;
 String std_name;
 String std_tel;
+String parent_tel;
 String std_address;
 String subject;
 String remarks;
@@ -28,6 +29,14 @@ String total_fee;
     }
     public void setStd_tel(String std_tel) {
         this.std_tel = std_tel;
+    }
+
+    public String getParent_tel() {
+        return parent_tel;
+    }
+
+    public void setParent_tel(String parent_tel) {
+        this.parent_tel = parent_tel;
     }
 
     public String getStd_address() {

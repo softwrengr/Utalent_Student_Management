@@ -34,7 +34,7 @@ import utalent.square.developer.utalent.R;
 
 public class AddStudentFragment extends Fragment {
 
-    EditText etName,etTel,etAddress,etSubject,etRemark,etFee;
+    EditText etName,etStdTel,etParentTel,etAddress,etSubject,etRemark,etFee;
     ImageView ivAdd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +43,8 @@ public class AddStudentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_add_student, container, false);
         etName = view.findViewById(R.id.etname);
         etAddress = view.findViewById(R.id.etAddress);
-        etTel = view.findViewById(R.id.etTel);
+        etStdTel = view.findViewById(R.id.etStdTel);
+        etParentTel = view.findViewById(R.id.etParentTel);
         etSubject = view.findViewById(R.id.etSubject);
         etRemark = view.findViewById(R.id.etRemark);
         etFee = view.findViewById(R.id.etFeetotal);
@@ -61,7 +62,8 @@ public class AddStudentFragment extends Fragment {
 
     private void apicallAddStd() {
         final String strName = etName.getText().toString();
-        final String strTel = etTel.getText().toString();
+        final String strTel = etStdTel.getText().toString();
+        final String strParentTel = etParentTel.getText().toString();
         final String strAddress = etAddress.getText().toString();
         final String strSub = etSubject.getText().toString();
         final String strRemark = etRemark.getText().toString();
@@ -90,7 +92,8 @@ public class AddStudentFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("name",strName);
-                params.put("tel",strTel);
+                params.put("student_tel",strTel);
+                params.put("parent_tel",strParentTel);
                 params.put("address",strAddress);
                 params.put("subject",strSub);
                 params.put("remark",strRemark);

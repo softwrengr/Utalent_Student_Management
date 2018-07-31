@@ -252,9 +252,19 @@ public class HomeFragment extends Fragment {
                             AddStudentModel model = new AddStudentModel();
                             String std_id = temp.getString("id");
                             String name = temp.getString("name");
+                            String address = temp.getString("address");
+                            String stdTel = temp.getString("student_tel");
+                            String parentTel = temp.getString("parent_tel");
+                            String subject = temp.getString("subject");
+                            String remark = temp.getString("remark");
                             String totalFee = temp.getString("fee_total");
                             model.setStd_id(std_id);
                             model.setStd_name(name);
+                            model.setStd_address(address);
+                            model.setStd_tel(stdTel);
+                            model.setParent_tel(parentTel);
+                            model.setSubject(subject);
+                            model.setRemarks(remark);
                             model.setTotal_fee(totalFee);
                             addStudentModelArrayList.add(model);
                         }
@@ -553,34 +563,5 @@ public class HomeFragment extends Fragment {
         mRequestQueue.add(stringRequest);
 
     }
-
-//    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    Fragment fragment = new HomeFragment();
-//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).addToBackStack("abc").commit();
-//                    Toast.makeText(getActivity(), "Loading...", Toast.LENGTH_SHORT).show();
-//                    return true;
-//
-//                case R.id.navigation_student:
-//                    Fragment fragment1 = new AddStudentFragment();
-//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).addToBackStack("abc").commit();
-//                    return true;
-//                case R.id.navigation_report:
-//                    Fragment fragment2 = new ReportFragment();
-//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment2).addToBackStack("abc").commit();
-//                    return true;
-//                case R.id.navigation_setting:
-//                    Fragment fragment3 = new SettingFragment();
-//                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment3).addToBackStack("abc").commit();
-//                    return true;
-//            }
-//            return false;
-//        }
-//    };
 
 }

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="450sp"
+    android:layout_height="400sp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/splash_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10sp"-->
+            <!--android:orientation="vertical">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:orientation="vertical"
+                android:layout_marginRight="20sp"
+                android:gravity="center"
+                android:layout_marginLeft="20sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:text="Update Student "
+                    android:textColor="#fff"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Username "
+                    android:layout_marginTop="20sp"
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedname"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Address "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedAddress"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Student Tel "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedStdTel"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Parent Tel "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedParentTel"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Subject "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedSubject"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/tvname"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Remark "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedRemark"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Fee Total "
+                    android:textColor="#fff"/>
+
+                <EditText
+                    android:id="@+id/etUpdatedFeetotal"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_bg"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#fff"
+                    android:textColor="#fff"
+                    android:paddingLeft="10sp"/>
+
+
+                <Button
+                    android:id="@+id/update"
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:text="update"
+                    android:layout_marginTop="15sp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btnripple"
+                    android:layout_marginBottom="15sp"
+                   />
+
+            </LinearLayout>
+        <!--</LinearLayout>-->
+    </ScrollView>
+
+</LinearLayout>

@@ -80,11 +80,11 @@
             android:layout_height="wrap_content"
             android:textSize="23sp"
             android:textStyle="bold"
-            android:text="Tel "
+            android:text="Student Tel "
             android:textColor="#fff"/>
 
         <EditText
-            android:id="@+id/etTel"
+            android:id="@+id/etStdTel"
             android:layout_width="220sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
@@ -124,6 +124,25 @@
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp"
         android:layout_marginTop="30sp">
+        <TextView
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:text="Parent Tel "
+            android:textColor="#fff"/>
+
+        <EditText
+            android:id="@+id/etParentTel"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_toRightOf="@+id/tvname"
+            android:background="@drawable/edittext_bg"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:paddingLeft="10sp"/>
         <TextView
             android:layout_width="120sp"
             android:layout_height="wrap_content"
