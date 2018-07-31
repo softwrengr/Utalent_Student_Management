@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,8 +76,8 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                 final TextView tvDialogRemark = dialog.findViewById(R.id.tvDialogRemark);
                 final TextView tvDialogFee = dialog.findViewById(R.id.tvDialogFee);
                 final Button btnDialogOk = dialog.findViewById(R.id.btnDialogOk);
-                Button btnDelete = dialog.findViewById(R.id.btnDeleteStd);
-                Button btnUpdate = dialog.findViewById(R.id.btnUpdateStd);
+                final Button btnDelete = dialog.findViewById(R.id.btnDeleteStd);
+                final Button btnUpdate = dialog.findViewById(R.id.btnUpdateStd);
                 tvDialogName.setText(editLicensesModel.getStd_name());
                 tvDialogAddress.setText(editLicensesModel.getStd_address());
                 tvDialogStdTel.setText(editLicensesModel.getStd_tel());
@@ -101,6 +103,29 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                     public void onClick(View v) {
                         dialog = new Dialog(context);
                         dialog.setContentView(R.layout.update_student_layout);
+                        EditText etName = dialog.findViewById(R.id.etUpdatedname);
+                        EditText etAddress = dialog.findViewById(R.id.etUpdatedAddress);
+                        EditText etStdTel = dialog.findViewById(R.id.etUpdatedStdTel);
+                        EditText etParentTel = dialog.findViewById(R.id.etUpdatedParentTel);
+                        EditText etSubject = dialog.findViewById(R.id.etUpdatedSubject);
+                        EditText etRemark = dialog.findViewById(R.id.etUpdatedRemark);
+                        EditText etFee = dialog.findViewById(R.id.etUpdatedFeetotal);
+                        Button update = dialog.findViewById(R.id.update);
+                        final String id = editLicensesModel.getStd_id();
+                        final String name = etName.getText().toString();
+                        final String address = etAddress.getText().toString();
+                        final String stdTel = etStdTel.getText().toString();
+                        final String stdPaTel  =etParentTel.getText().toString();
+                        final String subject = etSubject.getText().toString();
+                        final String remark = etRemark.getText().toString();
+                        final String totalFee = etFee.getText().toString();
+                        update.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                apiCallUpdateStd(id,name,address,stdTel,stdPaTel,subject,remark,totalFee);
+                            }
+                        });
+
                         dialog.show();
                     }
                 });
@@ -142,6 +167,7 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                         JSONObject jsonObject = new JSONObject(response);
                         String message = jsonObject.getString("data");
                         if(message.equals("student deleted successfully")){
+                            dialog.dismiss();
                             Fragment fragment = new HomeFragment();
                             ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                         }
@@ -186,7 +212,7 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
     }
 
     //apiCall for update student
-    private void apiCallUpdateStd(final String id) {
+    private void apiCallUpdateStd( final String id,final String name,final String address,final String stdTel,final String stdPaTel,final String subject,final String remark,final String fee) {
         if (alertDialog == null)
             alertDialog = AlertUtils.createProgressDialog((Activity) context);
         alertDialog.show();
@@ -195,18 +221,18 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
+                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
                 if (response.contains("200")) {
                     try {
                         alertDialog.dismiss();
+                        dialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
-                        String message = jsonObject.getString("data");
+                        String message = jsonObject.getString("message");
                         if(message.equals("student deleted successfully")){
                             Fragment fragment = new HomeFragment();
                             ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
                         }
-                        else {
-                            Toast.makeText(context, "you got some error!", Toast.LENGTH_SHORT).show();
-                        }
+                        dialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -231,7 +257,17 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+                Log.d("check",id);
+                Log.d("check",name);
+                Log.d("check",fee);
                 params.put("id", id);
+                params.put("name", name);
+                params.put("address", address);
+                params.put("student_tel", stdTel);
+                params.put("parent_tel", stdPaTel);
+                params.put("subject", subject);
+                params.put("remark", remark);
+                params.put("fee_total",fee);
                 return params;
 
             }

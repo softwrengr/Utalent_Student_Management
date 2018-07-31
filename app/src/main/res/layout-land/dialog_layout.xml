@@ -43,19 +43,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Student Name :"
+                    android:text="Student Name          :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
-                    android:text="Student Name"
+                    android:text=" Student Name"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -70,16 +70,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Student Address :"
+                    android:text="Student Address     :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogAddress"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
@@ -97,16 +97,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Student Tel :"
+                    android:text="Student Tel              :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogStdTel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
@@ -124,16 +124,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Parent Tel :"
+                    android:text="Parent Tel                :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogParentTel"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
@@ -151,16 +151,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Subject :"
+                    android:text="Subject                     :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogSubject"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
@@ -178,16 +178,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Remark :"
+                    android:text="Remark                     :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogRemark"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
@@ -205,16 +205,16 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
-                    android:text="Student Fee :"
+                    android:text="Student Fee            :"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDialogFee"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20sp"
                     android:text="Student Fee"
