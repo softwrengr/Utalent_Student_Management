@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/home_background"
+    android:background="#eee"
     tools:context=".Fragments.AddStudentFragment">
 
 <ScrollView
@@ -31,15 +31,15 @@
             android:textSize="23sp"
             android:textStyle="bold"
             android:text="Username "
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etname"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -52,15 +52,15 @@
             android:textStyle="bold"
             android:text="Remark "
             android:layout_marginLeft="10sp"
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etRemark"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -81,15 +81,15 @@
             android:textSize="23sp"
             android:textStyle="bold"
             android:text="Student Tel "
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etStdTel"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -102,15 +102,15 @@
             android:textStyle="bold"
             android:text="Fee Total "
             android:layout_marginLeft="10sp"
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etFeetotal"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -130,15 +130,15 @@
             android:textSize="23sp"
             android:textStyle="bold"
             android:text="Parent Tel "
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etParentTel"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -149,15 +149,16 @@
             android:textSize="23sp"
             android:textStyle="bold"
             android:text="Address "
-            android:textColor="#fff"/>
+            android:layout_marginLeft="5sp"
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etAddress"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -178,15 +179,15 @@
             android:textSize="23sp"
             android:textStyle="bold"
             android:text="Subject "
-            android:textColor="#fff"/>
+            android:textColor="#000"/>
 
         <EditText
             android:id="@+id/etSubject"
             android:layout_width="220sp"
-            android:layout_height="wrap_content"
+            android:layout_height="35sp"
             android:layout_marginLeft="20sp"
             android:layout_toRightOf="@+id/tvname"
-            android:background="@drawable/edittext_bg"
+            android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
             android:textColor="#fff"
@@ -194,9 +195,9 @@
 
         <ImageView
             android:id="@+id/add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:src="@drawable/addd"
             android:padding="10sp"
             android:layout_gravity="center"
             android:layout_marginLeft="150sp" />

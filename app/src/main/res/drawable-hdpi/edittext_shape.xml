@@ -3,11 +3,11 @@
 
 
     <corners
-        android:radius="100dp"
+        android:radius="0dp"
         />
 
     />
     <stroke
         android:width="1dip"
-        android:color="#FFFFFF" />
+        android:color="#000" />
 </shape>

@@ -240,6 +240,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(String response) {
                 alertDialog.dismiss();
                 Log.d("response", response);
+                addStudentModelArrayList.clear();
                 if (response.contains("200")) {
                     try {
                         if (alertDialog != null)

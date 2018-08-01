@@ -91,7 +91,7 @@ public class FeeReportAdapter  extends RecyclerView.Adapter<FeeReportAdapter.MyV
     private void apicallDeleteStd(String id) {
         final String stdId = id;
         Log.d("zma",stdId);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/delete_student.php?"
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://chritmis.com/Utalent_Api/remove_student.php"
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

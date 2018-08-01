@@ -97,7 +97,7 @@ public class AddStudentFragment extends Fragment {
                 params.put("address",strAddress);
                 params.put("subject",strSub);
                 params.put("remark",strRemark);
-                params.put("fee",strFee);
+                params.put("fee_total",strFee);
                 return params;
             }
 
