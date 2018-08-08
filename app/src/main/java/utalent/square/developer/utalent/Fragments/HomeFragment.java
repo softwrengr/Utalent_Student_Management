@@ -382,7 +382,7 @@ public class HomeFragment extends Fragment {
                             ShowFeeModel model = new ShowFeeModel();
                             String id = temp.getString("student_id");
                             String name = temp.getString("name");
-                            String totalFee = temp.getString("fee");
+                            String totalFee = temp.getString("fee_total");
                             model.setId(id);
                             model.setName(name);
                             model.setFee(totalFee);

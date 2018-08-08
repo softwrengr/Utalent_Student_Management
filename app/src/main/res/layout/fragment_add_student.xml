@@ -42,7 +42,7 @@
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
             android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
 
         <TextView
@@ -62,8 +62,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
     </LinearLayout>
 
@@ -91,8 +91,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
 
         <TextView
@@ -112,8 +112,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
     </LinearLayout>
 
@@ -140,8 +140,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
         <TextView
             android:layout_width="120sp"
@@ -160,8 +160,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
 
     </LinearLayout>
@@ -189,8 +189,8 @@
             android:layout_toRightOf="@+id/tvname"
             android:background="@drawable/edittext_shape"
             android:inputType="textEmailAddress"
-            android:textColorHint="#fff"
-            android:textColor="#fff"
+            android:textColorHint="#f3f3f3"
+            android:textColor="#000"
             android:paddingLeft="10sp"/>
 
         <ImageView

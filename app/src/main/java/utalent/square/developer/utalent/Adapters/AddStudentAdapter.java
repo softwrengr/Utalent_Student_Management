@@ -103,30 +103,34 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                     public void onClick(View v) {
                         dialog = new Dialog(context);
                         dialog.setContentView(R.layout.update_student_layout);
-                        EditText etName = dialog.findViewById(R.id.etUpdatedname);
-                        EditText etAddress = dialog.findViewById(R.id.etUpdatedAddress);
-                        EditText etStdTel = dialog.findViewById(R.id.etUpdatedStdTel);
-                        EditText etParentTel = dialog.findViewById(R.id.etUpdatedParentTel);
-                        EditText etSubject = dialog.findViewById(R.id.etUpdatedSubject);
-                        EditText etRemark = dialog.findViewById(R.id.etUpdatedRemark);
-                        EditText etFee = dialog.findViewById(R.id.etUpdatedFeetotal);
                         Button update = dialog.findViewById(R.id.update);
-                        final String id = editLicensesModel.getStd_id();
-                        final String name = etName.getText().toString();
-                        final String address = etAddress.getText().toString();
-                        final String stdTel = etStdTel.getText().toString();
-                        final String stdPaTel  =etParentTel.getText().toString();
-                        final String subject = etSubject.getText().toString();
-                        final String remark = etRemark.getText().toString();
-                        final String totalFee = etFee.getText().toString();
+                        dialog.show();
                         update.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                apiCallUpdateStd(id,name,address,stdTel,stdPaTel,subject,remark,totalFee);
+                                EditText etName = dialog.findViewById(R.id.etUpdatedname);
+                                EditText etAddress = dialog.findViewById(R.id.etUpdatedAddress);
+                                EditText etStdTel = dialog.findViewById(R.id.etUpdatedStdTel);
+                                EditText etParentTel = dialog.findViewById(R.id.etUpdatedParentTel);
+                                EditText etSubject = dialog.findViewById(R.id.etUpdatedSubject);
+                                EditText etRemark = dialog.findViewById(R.id.etUpdatedRemark);
+                                EditText etFee = dialog.findViewById(R.id.etUpdatedFeetotal);
+                                final String id = editLicensesModel.getStd_id();
+                                final String name = etName.getText().toString();
+                                final String address = etAddress.getText().toString();
+                                final String stdTel = etStdTel.getText().toString();
+                                final String stdPaTel = etParentTel.getText().toString();
+                                final String subject = etSubject.getText().toString();
+                                final String remark = etRemark.getText().toString();
+                                final String totalFee = etFee.getText().toString();
+                                apiCallUpdateStd(id, name, address, stdTel, stdPaTel, subject, remark, totalFee);
+                                dialog.dismiss();
+                                Fragment fragment = new HomeFragment();
+                                ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                             }
                         });
 
-                        dialog.show();
+
                     }
                 });
                 dialog.show();
@@ -166,12 +170,11 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                         alertDialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
                         String message = jsonObject.getString("data");
-                        if(message.equals("student deleted successfully")){
+                        if (message.equals("student deleted successfully")) {
                             dialog.dismiss();
                             Fragment fragment = new HomeFragment();
-                            ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
-                        }
-                        else {
+                            ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                        } else {
                             Toast.makeText(context, "you got some error!", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -212,7 +215,7 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
     }
 
     //apiCall for update student
-    private void apiCallUpdateStd( final String id,final String name,final String address,final String stdTel,final String stdPaTel,final String subject,final String remark,final String fee) {
+    private void apiCallUpdateStd(final String id, final String name, final String address, final String stdTel, final String stdPaTel, final String subject, final String remark, final String fee) {
         if (alertDialog == null)
             alertDialog = AlertUtils.createProgressDialog((Activity) context);
         alertDialog.show();
@@ -221,16 +224,16 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
             @Override
             public void onResponse(String response) {
                 alertDialog.dismiss();
-                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "updated successfully please go back to refresh the contents", Toast.LENGTH_LONG).show();
                 if (response.contains("200")) {
                     try {
                         alertDialog.dismiss();
                         dialog.dismiss();
                         JSONObject jsonObject = new JSONObject(response);
                         String message = jsonObject.getString("message");
-                        if(message.equals("student deleted successfully")){
+                        if (message.equals("updated successfully")) {
                             Fragment fragment = new HomeFragment();
-                            ((AppCompatActivity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                            ((AppCompatActivity) context).getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                         }
                         dialog.dismiss();
                     } catch (JSONException e) {
@@ -257,9 +260,9 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                Log.d("check",id);
-                Log.d("check",name);
-                Log.d("check",fee);
+                Log.d("check", id);
+                Log.d("check", name);
+                Log.d("check", fee);
                 params.put("id", id);
                 params.put("name", name);
                 params.put("address", address);
@@ -267,7 +270,7 @@ public class AddStudentAdapter extends RecyclerView.Adapter<AddStudentAdapter.My
                 params.put("parent_tel", stdPaTel);
                 params.put("subject", subject);
                 params.put("remark", remark);
-                params.put("fee_total",fee);
+                params.put("fee_total", fee);
                 return params;
 
             }
